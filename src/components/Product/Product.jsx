@@ -1,7 +1,7 @@
 
 
 const Product = (props) => {
-    const {title, price , quantity} = props
+    const {product:{title, price , quantity}} = props
     return (
         <tr>
             <td>{title}</td>
