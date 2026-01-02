@@ -3,4 +3,14 @@
     padding-left: 30px;
     margin: 10px;
     background-color: rgb(251, 213, 220);
+    width: 250px;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+    font-size:1.5em ;
+}
+.amount{
+    padding: 0 20px;
 }
