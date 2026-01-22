@@ -1,15 +1,17 @@
 import PropTypes from 'prop-types';
 
 const Product = (props) => {
-    const {product:{title, price , quantity}} = props
+    const {
+        product:{id,title, price , quantity},addNewProduct } = props;
+    const addToCart = () => addNewProduct(id)
     return (
-        <tr>
+        <tr onClick={addToCart}> 
             <td>{title}</td>
             <td>{price} uah</td>
             <td>{quantity} etc.</td>
         </tr>
     );
-}
+};
 Product.propTypes = {
     product: PropTypes.shape({
         title:PropTypes.string.isRequired,
