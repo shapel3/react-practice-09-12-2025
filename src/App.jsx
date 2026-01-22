@@ -1,12 +1,8 @@
-
-import UsersSection from "./components/UsersSection/UsersSection";
-// import ProductsTable from "./components/ProductsTable/ProductsTable";
-
+import ShowPage from './pages/ShopPage'
 function App() {
   return(
     <>
-    {/* <ProductsTable /> */}
-  <UsersSection />
+    <ShowPage />
   </>
   ) 
   

@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types';
 
 const Product = (props) => {
     const {product:{title, price , quantity}} = props
@@ -9,6 +9,13 @@ const Product = (props) => {
             <td>{quantity} etc.</td>
         </tr>
     );
+}
+Product.propTypes = {
+    product: PropTypes.shape({
+        title:PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        quantity: PropTypes.number,
+    })
 }
 
 export default Product;
