@@ -11,6 +11,8 @@ const Shop = () => {
     const productsAfterAdd = products.map((product) => {
       if (product.id === id) {
         product.quantity--;
+         console.log(product.quantity);
+        
         return product;
       }
       return product;
@@ -23,7 +25,7 @@ const Shop = () => {
         newProduct.quantity = 1;
     }
     const newCartProducts = [...new Set([...cartProducts, newProduct])]
-    setCartProducts([newCartProducts]);
+    setCartProducts(newCartProducts);
   };
   return (
     <>
