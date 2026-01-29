@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import Product from "../Product/Product";
 import styles from "./ProductsTable.module.css";
 
@@ -19,5 +20,10 @@ const ProductsTable = (props) => {
     </table>
   );
 };
+
+ProductsTable.PropTypes = {
+  products: PropTypes.array,
+  addNewProduct: PropTypes.func
+}
 
 export default ProductsTable;
