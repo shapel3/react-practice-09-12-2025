@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const CartItem = (props) => {
   const {
-    product: { id, title, price, quantityInCart },
+    product: { title, price, quantityInCart },
   } = props;
   return (
     <li>

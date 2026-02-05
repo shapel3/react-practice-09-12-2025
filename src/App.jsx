@@ -1,8 +1,9 @@
-import ShowPage from './pages/ShopPage'
+import QuizPage from './pages/QuizPage';
+
 function App() {
   return(
     <>
-    <ShowPage />
+    <QuizPage />
   </>
   ) 
   
