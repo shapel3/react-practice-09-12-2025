@@ -1,9 +1,10 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { useState } from "react";
-import Icon from '@mdi/react';
-import { mdiThumbUp ,  mdiThumbDown } from '@mdi/js';
-import styles from "./UserProfile.module.css";
+import Icon from "@mdi/react";
+import { mdiThumbUp, mdiThumbDown } from "@mdi/js";
+import cx from "classnames";
+import styles from "./UserProfile.module.scss";
 
 const UserProfile = (props) => {
   const {
@@ -18,45 +19,57 @@ const UserProfile = (props) => {
   };
   const addLike = (event) => {
     event.stopPropagation();
-    setAmount(amount+1)};
+    setAmount(amount + 1);
+  };
   const subLike = (event) => {
     event.stopPropagation();
     if (amount > 0) {
-      setAmount(amount -1 )
+      setAmount(amount - 1);
     } else {
       setAmount(0);
     }
   };
- const changeIsDelete = ()=>{
-  setIsDelete(true);
- }
- if(isDelete) return null;
+  const changeIsDelete = () => {
+    setIsDelete(true);
+  };
+  const articleClasses = cx(styles["user-profile"], {
+    [styles["select"]]: isSelect,
+    [styles["noselect"]]: !isSelect,
+  });
+
+  if (isDelete) return null;
   return (
     <article
       onClick={changeIsSelect}
-      className={styles["user-profile"]}
+      className={articleClasses}
       style={{ border: borderSelect }}
     >
-       <button onClick={changeIsDelete}>X</button> 
-      
-      <h2>name : {name}</h2>
+      <button onClick={changeIsDelete}>X</button>
+
+      <h2>
+        name : <span>{name}</span>
+      </h2>
       <h3>age: {age}</h3>
       <p>email: {email}</p>
       <p className={styles.flex}>
-        <span onClick={addLike}><Icon path={mdiThumbUp} size ={1}/></span>
+        <span onClick={addLike}>
+          <Icon path={mdiThumbUp} size={1} />
+        </span>
         <span className={styles.amount}>{amount}</span>
-        <span onClick={subLike}><Icon path={mdiThumbDown}  size ={1} /></span>
+        <span onClick={subLike}>
+          <Icon path={mdiThumbDown} size={1} />
+        </span>
       </p>
     </article>
   );
 };
 
 UserProfile.propTypes = {
-    user: PropTypes.shape({
-        name:PropTypes.string.isRequired,
-        age: PropTypes.number.isRequired,
-        email: PropTypes.string.isRequired,
-    })
-}
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    age: PropTypes.number.isRequired,
+    email: PropTypes.string.isRequired,
+  }),
+};
 
 export default UserProfile;

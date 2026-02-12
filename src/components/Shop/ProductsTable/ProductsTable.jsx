@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import Product from "../Product/Product";
-import styles from "./ProductsTable.module.css";
+import styles from "./ProductsTable.module.scss";
 
 const ProductsTable = (props) => {
     const {products, addNewProduct} = props;
