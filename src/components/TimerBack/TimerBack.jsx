@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { parseISO, differenceInSeconds, formatDistanceToNow } from "date-fns";
+import {
+  parseISO,
+  differenceInDays,
+  differenceInHours,
+  differenceInMinutes,
+  differenceInSeconds,
+  differenceInMilliseconds,
+  sub,
+} from "date-fns";
 
 const TimerBack = (props) => {
   const { title, dateStr } = props;
@@ -9,14 +17,31 @@ const TimerBack = (props) => {
 
   useEffect(() => {
     const idInterval = setInterval(() => {
-      //  1 option
-      // const now = new Date();
-      // const secRemainder = differenceInSeconds(date,now);
-      // setTimeReminder(secRemainder)
-
-      // oprion 2
-    //   setTimeReminder(formatDistanceToNow(date))
-    
+      const now = new Date();
+      const days = differenceInDays(date, now);
+      const hours = differenceInHours(sub(date, { days }), now);
+      const minutes = differenceInMinutes(sub(date, { days, hours }), now);
+      const seconds = differenceInSeconds(
+        sub(date, { days, hours, minutes }),
+        now,
+      );
+      const miliseconds = differenceInMilliseconds(
+        sub(date, { days, hours, minutes, seconds }),
+        now,
+      );
+      if (
+        days <= 0 &&
+        hours <= 0 &&
+        minutes <= 0 &&
+        seconds <= 0 &&
+        miliseconds <= 0
+      ) {
+        setInterval("Time out!");
+      } else {
+        setTimeReminder(
+          `${days} days, ${hours}:${minutes}:${seconds}:${miliseconds}`,
+        );
+      }
     }, 1000);
     return () => {
       clearInterval(idInterval);
@@ -37,3 +62,12 @@ TimerBack.propTypes = {
 };
 
 export default TimerBack;
+
+//  1 option
+// const now = new Date();
+// const secRemainder = differenceInSeconds(date,now);
+// setTimeReminder(secRemainder)
+// oprion 2
+//   setTimeReminder(formatDistanceToNow(date))
+
+//option 3
