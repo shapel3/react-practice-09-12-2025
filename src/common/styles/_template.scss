@@ -1,0 +1,12 @@
+@use '/src/common/styles/colors' as *;
+@use '/src/common/styles/mixins' as*;
+
+%light{
+ color: $mainTextColor ;
+ background-color: $mainBgColor ;
+}
+
+%dark{
+    color: $mainBgColor ;
+    background-color: $mainTextColor ;
+}
