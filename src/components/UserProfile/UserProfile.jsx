@@ -9,7 +9,7 @@ import { withTheme } from '../HOCs';
 
 const UserProfile = (props) => {
   const {
-    user: { name = "Anonim", age = "100", email = "anonim@gmail.com" },
+    user: { name = "Anonim", age = "100", email = "anonim@gmail.com" }, theme
   } = props;
   const [isSelect, setIsSelect] = useState(false);
   const [amount, setAmount] = useState(0);
