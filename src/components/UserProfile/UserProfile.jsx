@@ -1,12 +1,11 @@
 import PropTypes from "prop-types";
-
-import { useState , useContext } from "react";
+import { useState } from "react";
 import Icon from "@mdi/react";
 import { mdiThumbUp, mdiThumbDown } from "@mdi/js";
 import cx from "classnames";
 import styles from "./UserProfile.module.scss";
-import { ThemeContext } from "../../contexts";
 import CONSTANTS from "../../constants";
+import { withTheme } from '../HOCs';
 
 const UserProfile = (props) => {
   const {
@@ -15,7 +14,7 @@ const UserProfile = (props) => {
   const [isSelect, setIsSelect] = useState(false);
   const [amount, setAmount] = useState(0);
   const [isDelete, setIsDelete] = useState(false);
-  const {theme, setTheme} = useContext(ThemeContext);
+ 
   
 
 
@@ -78,6 +77,7 @@ UserProfile.propTypes = {
     age: PropTypes.number.isRequired,
     email: PropTypes.string.isRequired,
   }),
+  theme: PropTypes.string
 };
 
-export default UserProfile;
+export default withTheme(UserProfile);
